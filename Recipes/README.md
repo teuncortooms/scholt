@@ -14,7 +14,7 @@ Another ABP solution is available as a POC. See its README.
 
 - OAuth2 authentication does not work in Swagger (yet), but does in e.g. Postman. 
 
-- My personal Azure tenant enforces MFA, which makes it harder to create a test user
+- My personal Azure tenant enforces MFA, which makes it harder to create a test user. Feel free to test it out.
 
   ```
   - Grant type: Authorization code
@@ -56,7 +56,7 @@ Aspire is like Docker Compose, but easier.
 Open Seq on the Aspire Dashboard to see (structured) logs.
 
 ### Database
-The connection string is generated and can be found in the Aspire Dashboard, in the environment vars of the Recipes app (in the panel that opens when you click the api). The string will look like this:
+The connection string is generated and can be found in the Aspire Dashboard, in the environment vars of the Recipes app (in the panel that opens when you click the api). The string will look something like this:
 
 ```
 Server=127.0.0.1,50688;User ID=sa;Password=Pd6jWYZzC4RjH2Gqa8AwRq;TrustServerCertificate=true;Initial Catalog=Recipes-Teun;Integrated Security=false
