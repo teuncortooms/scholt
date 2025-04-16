@@ -13,8 +13,5 @@ internal class CurrentUserService : ICurrentUserService
         this.httpContextAccessor = httpContextAccessor;
     }
 
-    //public string? UserId => User?.FindFirstValue(ClaimTypes.Upn) ?? User?.FindFirstValue(JwtClaimTypes.PreferredUserName);
-    //public string? Name => User?.Identity?.Name ?? User?.FindFirstValue(JwtClaimTypes.Name);
-    public string? UserId => throw new NotImplementedException();
-    public string? Name => throw new NotImplementedException();
+    public string? Name => User?.FindFirstValue("name");
 }

@@ -13,14 +13,16 @@ internal class RecipeDto
     public required List<string> Ingredients { get; set; }
     public required List<string> Instructions { get; set; }
 
-    public Core.Domain.Entities.Recipe ToRecipe()
+    public Recipe ToRecipe()
     {
-        return new Core.Domain.Entities.Recipe
+        return new Recipe
         {
             Id = Guid.NewGuid(),
             Name = Name,
             Ingredients = Ingredients.Select(i => new Ingredient { Text = i }).ToList(),
-            Instructions = Instructions.Select(i => new Instruction { Text = i }).ToList()
+            Instructions = Instructions.Select(i => new Instruction { Text = i }).ToList(),
+            CreatedBy = "Seed",
+            CreatedOn = DateTime.Now
         };
     }
 }

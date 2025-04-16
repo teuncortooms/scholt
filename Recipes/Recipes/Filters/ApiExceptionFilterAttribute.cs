@@ -17,7 +17,6 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         exceptionHandlers = new Dictionary<Type, Action<ExceptionContext>>
         {
             { typeof(UserFriendlyCoreException), HandleUserFriendlyException },
-            { typeof(InvalidConfigurationException), HandleInvalidConfigurationException },
             { typeof(UnauthorizedAccessException), HandleUnauthorizedAccessException },
         };
     }
@@ -58,13 +57,11 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         HandleUnknownException(context);
     }
 
-    private static void HandleUserFriendlyException(ExceptionContext context)
+    private static void HandleInvalidModelStateException(ExceptionContext context)
     {
-        var exception = (UserFriendlyCoreException)context.Exception;
-
-        var details = new ProblemDetails()
+        var details = new ValidationProblemDetails(context.ModelState)
         {
-            Detail = exception.Message
+            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
         };
 
         context.Result = new BadRequestObjectResult(details);
@@ -72,11 +69,13 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         context.ExceptionHandled = true;
     }
 
-    private static void HandleInvalidModelStateException(ExceptionContext context)
+    private static void HandleUserFriendlyException(ExceptionContext context)
     {
-        var details = new ValidationProblemDetails(context.ModelState)
+        var exception = (UserFriendlyCoreException)context.Exception;
+
+        var details = new ProblemDetails()
         {
-            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1"
+            Detail = exception.Message
         };
 
         context.Result = new BadRequestObjectResult(details);
@@ -96,23 +95,6 @@ public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
         context.Result = new ObjectResult(details)
         {
             StatusCode = StatusCodes.Status403Forbidden
-        };
-
-        context.ExceptionHandled = true;
-    }
-
-    private static void HandleInvalidConfigurationException(ExceptionContext context)
-    {
-        var exception = (InvalidConfigurationException)context.Exception;
-
-        var details = new ProblemDetails
-        {
-            Status = StatusCodes.Status500InternalServerError,
-        };
-
-        context.Result = new ObjectResult(details)
-        {
-            StatusCode = StatusCodes.Status500InternalServerError
         };
 
         context.ExceptionHandled = true;

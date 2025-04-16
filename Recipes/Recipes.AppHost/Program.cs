@@ -8,7 +8,7 @@ var seq = builder.AddSeq("seq")
     .WithLifetime(ContainerLifetime.Persistent)
     .WithEnvironment("ACCEPT_EULA", "Y");
 
-var sql = builder.AddSqlServer("sql")
+var sql = builder.AddSqlServer("sql", null, 50688)
     .WithDataVolume()
     .WithLifetime(ContainerLifetime.Persistent);
 

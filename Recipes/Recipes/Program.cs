@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
+using Recipes.API.Swagger;
 using Recipes.Core.Application;
 using Recipes.Core.Application.Common.Interfaces;
 using Recipes.Filters;
 using Recipes.Services;
 using Recipes.Security;
-using Recipes.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -35,7 +35,7 @@ services.AddControllers(o =>
 
 services.AddOpenApi();
 
-services.AddSwaggerWithOAuth(configuration);
+services.AddCustomSwagger(configuration);
 
 var app = builder.Build();
 
@@ -47,7 +47,7 @@ if (isDevelopment)
 {
     app.MapOpenApi();
 
-    app.UseSwaggerWithOAuth(configuration);
+    app.UseCustomSwagger(configuration);
 }
 
 app.UseHttpsRedirection();
