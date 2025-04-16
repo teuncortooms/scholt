@@ -1,0 +1,97 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "4.1.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account": {
+      "version": "9.1.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "9.1.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity": {
+      "version": "9.1.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "9.1.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "9.1.0",
+      "isInstalled": true
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "9.1.0",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "AbpRecipes.Application": {
+      "path": "src/AbpRecipes.Application/AbpRecipes.Application.abppkg",
+      "folder": "src"
+    },
+    "AbpRecipes.Application.Tests": {
+      "path": "test/AbpRecipes.Application.Tests/AbpRecipes.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "AbpRecipes.Domain.Shared": {
+      "path": "src/AbpRecipes.Domain.Shared/AbpRecipes.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "AbpRecipes.Application.Contracts": {
+      "path": "src/AbpRecipes.Application.Contracts/AbpRecipes.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "AbpRecipes.HttpApi": {
+      "path": "src/AbpRecipes.HttpApi/AbpRecipes.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "AbpRecipes.HttpApi.Client": {
+      "path": "src/AbpRecipes.HttpApi.Client/AbpRecipes.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "AbpRecipes.EntityFrameworkCore.Tests": {
+      "path": "test/AbpRecipes.EntityFrameworkCore.Tests/AbpRecipes.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "AbpRecipes.EntityFrameworkCore": {
+      "path": "src/AbpRecipes.EntityFrameworkCore/AbpRecipes.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "AbpRecipes.TestBase": {
+      "path": "test/AbpRecipes.TestBase/AbpRecipes.TestBase.abppkg",
+      "folder": "test"
+    },
+    "AbpRecipes.Domain.Tests": {
+      "path": "test/AbpRecipes.Domain.Tests/AbpRecipes.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "AbpRecipes.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/AbpRecipes.HttpApi.Client.ConsoleTestApp/AbpRecipes.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "AbpRecipes.DbMigrator": {
+      "path": "src/AbpRecipes.DbMigrator/AbpRecipes.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "AbpRecipes.Blazor": {
+      "path": "src/AbpRecipes.Blazor/AbpRecipes.Blazor.abppkg",
+      "folder": "src"
+    },
+    "AbpRecipes.Domain": {
+      "path": "src/AbpRecipes.Domain/AbpRecipes.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

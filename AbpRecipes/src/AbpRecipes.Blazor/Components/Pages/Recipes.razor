@@ -1,0 +1,31 @@
+﻿@page "/recipes"
+@using AbpRecipes.Recipes
+@using Volo.Abp.Application.Dtos
+@inherits AbpCrudPageBase<IRecipesAppService, RecipeDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateRecipeCommand>
+
+<Card>
+    <CardHeader>
+        <h2>@L["Recipes"]</h2>
+    </CardHeader>
+    <CardBody>
+        <DataGrid TItem="RecipeDto"
+                  Data="Entities"
+                  ReadData="OnDataGridReadAsync"
+                  TotalItems="TotalCount"
+                  ShowPager="true"
+                  PageSize="PageSize">
+            <DataGridColumns>
+                <DataGridColumn TItem="RecipeDto"
+                                Field="@nameof(RecipeDto.Name)"
+                                Caption="@L["Name"]"></DataGridColumn>
+                <DataGridColumn TItem="RecipeDto"
+                                Field="@nameof(RecipeDto.CreationTime)"
+                                Caption="@L["CreationTime"]">
+                    <DisplayTemplate>
+                        @context.CreationTime.ToLongDateString()
+                    </DisplayTemplate>
+                </DataGridColumn>
+            </DataGridColumns>
+        </DataGrid>
+    </CardBody>
+</Card>

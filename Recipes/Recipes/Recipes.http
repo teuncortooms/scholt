@@ -1,0 +1,31 @@
+@Recipes_HostAddress = https://localhost:7050
+
+@page=1
+@pageSize=10
+GET {{Recipes_HostAddress}}/recipes?page={{page}}&pageSize={{pageSize}}
+
+###
+
+GET {{Recipes_HostAddress}}/recipes/pizza
+
+###
+
+GET {{Recipes_HostAddress}}/recipes/chai
+
+###
+
+GET {{Recipes_HostAddress}}/recipes/48b7a816-28fa-4cbf-8f5b-3d99ab4b8548
+
+###
+
+POST {{Recipes_HostAddress}}/recipes/
+Content-Type: application/json
+
+{
+    "name": "lasagna",
+    "ingredients": ["cheese", "tomato"],
+    "instructions": ["Add veggies", "Put in oven"]
+}
+
+###
+
