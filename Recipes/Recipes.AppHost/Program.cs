@@ -1,18 +1,22 @@
+using Microsoft.Extensions.Configuration;
 using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
 var seq = builder.AddSeq("seq")
-    .WithDataVolume()
     .ExcludeFromManifest()
-    .WithLifetime(ContainerLifetime.Persistent)
     .WithEnvironment("ACCEPT_EULA", "Y");
 
-var sql = builder.AddSqlServer("sql", null, 50688)
-    .WithDataVolume()
-    .WithLifetime(ContainerLifetime.Persistent);
+var sql = builder.AddSqlServer("sql", null, 50688);
 
 var db = sql.AddDatabase("database", "Recipes-Teun");
+
+var isTestRun = builder.Configuration.GetValue("isTestRun", false);
+if (!isTestRun)
+{
+    sql.WithLifetime(ContainerLifetime.Persistent).WithDataVolume();
+    seq.WithLifetime(ContainerLifetime.Persistent).WithDataVolume();
+}
 
 var migrator = builder.AddProject<Recipes_Migrator>("migrator")
     .WithReference(seq)

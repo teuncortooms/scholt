@@ -1,5 +1,9 @@
 @Recipes_HostAddress = https://localhost:7050
 
+GET {{Recipes_HostAddress}}/recipes
+
+###
+
 @page=1
 @pageSize=10
 GET {{Recipes_HostAddress}}/recipes?page={{page}}&pageSize={{pageSize}}
